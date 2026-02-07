@@ -1,0 +1,31 @@
+This file serves no purpose in the game,
+but is for whoever is reading this to understand what the heck is going on the dialogue files.
+
+This is the first of Castor's lines
+
+    @,oh hi!,0:t/2:t,2->f
+
+Seperated by commas, the first section is all the acceptable phrases to trigger the dialogue.
+@ means any phrase is accepted.
+Usually they are seperated by / for multiple options of acceptable phrases.
+
+    whoareyou/whoareu/whoryou/whoru/whoyou/whou
+
+The second section is the dialogue that the character will respond with.
+# represents new line or \n
+$ represents new page
+_ represents 40 spaces (so it stays on the previous page for longer before changing)
+
+The third section is the booleans necessary to trigger the dialogue other than the acceptable phrases.
+They are seperated by / for multiple booleans.
+The number is the list index in the Character object's bools list.
+The t or f after the : means whether or not it has to be True or False.
+
+The fourth section is what booleans this phrase should flip.
+They are seperated by / for multiple booleans.
+The number is the lsit index int he Characcter object's bools list.
+the t or f after the -> means what the boolean will flip to.
+
+For Castor's first line, any phrase can trigger the dialogue as long as his index 0 and 2 are True,
+which represent if he is on screen and is sleeping.
+After it is spoken, flip the second boolean to False, which is the boolean to say if he is sleeping.

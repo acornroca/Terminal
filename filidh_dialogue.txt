@@ -1,0 +1,3 @@
+door/opendoor|You try to open the door, but it is locked.|Filidh=1:t/Filidh=2:f|
+door/opendoor|Using the red key, you push the door open.|Filidh=1:t/Filidh=2:t|
+@|MIn-F1:If you wish to get his attention, please use the keyword "talk" before your message.|Castor=0:t/Castor=2:t|
