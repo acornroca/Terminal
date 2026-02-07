@@ -3,8 +3,8 @@ import functions
 from characters import castor, filidh, all_characters
 
 #sets initial screen
-screen_x = 0
-screen_y = 0
+screen_x = 200
+screen_y = 200
 screen = pygame.display.set_mode((screen_y, screen_y))
 
 #color of bg
@@ -30,6 +30,8 @@ clock = pygame.time.Clock()
 #gameloop
 running = True
 while running:
+
+    print(keyboard_enable)
 
     #clock
     clock.tick(60)
@@ -86,6 +88,7 @@ while running:
 
                     #interact with castor, and talk with him
                     if affect == "dialogue_Castor":
+                        pygame.event.post(filidh.custom_events[0])
                         keyboard_enable = False
                         castor.temps[0] = ""
                         castor.temps[1] = value
@@ -105,23 +108,19 @@ while running:
 
                     #this whole chunk is if you make f1 say the talk tutorial 3 times
                     #if the repeat counter == 3, add one to repeat counter, turn off repeat, and turn on repeat_activate
-                    if filidh.temps[3] == 3:
-                        print(filidh.temps[3])
+                    if filidh.temps[3] == 3 and castor.bools[0]:
                         filidh.temps[3] += 1
                         filidh.bools[3] = False
                         filidh.bools[4] = True
                     #if the repeat counter == 5 ie after you make f3 angry, turn off appear so they stop talking
-                    if filidh.temps[3] == 5:
-                        print(filidh.temps[3])
+                    elif filidh.temps[3] == 4 and castor.bools[0]:
+                        filidh.temps[3] = 0
                         filidh.bools[0] = False
                     #if repeat is True, add one to the repeat counter and disable repeat so that it can be renabled by the dialogue
                     #if repeat is False, add one to the repeat counter and that is it.
-                    if filidh.bools[3]:
+                    elif filidh.bools[3] and castor.bools[0]:
                         filidh.temps[3] += 1
-                        print(filidh.temps[3])
                         filidh.bools[3] = False
-                    elif not filidh.bools[3]:
-                        filidh.temps[3] += 1
 
                     #resets message after entering
                     current = '>'

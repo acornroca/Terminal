@@ -7,11 +7,12 @@ screen_y = 0
 screen = pygame.display.set_mode((screen_y, screen_y))
 
 class Character:
-    def __init__(self,name,dialogue,images,events,bools,temps,text_font,text_surface,text_rect):
+    def __init__(self,name,dialogue,images,events,custom_events,bools,temps,text_font,text_surface,text_rect):
         self.name = name
         self.dialogue = dialogue
         self.images = images
         self.events = events
+        self.custom_events = custom_events
         self.bools = bools
         self.temps = temps
         self.text_font = text_font
@@ -24,6 +25,7 @@ class Character:
 castor_idle = pygame.image.load(R"Terminal\main_floor\Castor_idle.png").convert_alpha()
 castor_idle2 = pygame.image.load(R"Terminal\main_floor\Castor_idle2.png").convert_alpha()
 castor_blink = pygame.event.custom_type()
+castor_blink_custom = pygame.event.Event(castor_blink)
 
 #castor bools
 castor_appear = False
@@ -37,6 +39,7 @@ castor_text_font = pygame.font.SysFont("indieflower", 35)
 castor_text_surface = castor_text_font.render(castor_text, True, (0,0,0))
 castor_text_rect = castor_text_surface.get_rect(center=(screen.get_width()//2 + 200, screen.get_height()//4+200))
 castor_text_speed = pygame.event.custom_type()
+castor_text_speed_custom = pygame.event.Event(castor_text_speed)
 castor_text_chr = 0
 
 #castor's dialogue
@@ -48,6 +51,7 @@ castor_dialogue_open.close()
 #castor's lists
 castor_images = [castor_idle, castor_idle2]
 castor_events = [castor_blink, castor_text_speed]
+castor_custom_events = [castor_blink_custom, castor_text_speed_custom]
 castor_bools = [castor_appear, castor_blinking, castor_sleeping]
 castor_temps = [castor_text, castor_text_temp, castor_text_chr]
 
@@ -67,7 +71,9 @@ filidh_text_font = pygame.font.Font(R"Terminal\main_floor\Terminal.ttf", 25)
 filidh_text_surface = filidh_text_font.render(filidh_text, True, (0,0,0))
 filidh_text_rect = filidh_text_surface.get_rect(center=(screen.get_width()//2 + 200, screen.get_height()//4+200))
 filidh_text_disappear = pygame.event.custom_type()
+filidh_text_disappear_custom = pygame.event.Event(filidh_text_disappear)
 filidh_text_speed = pygame.event.custom_type()
+filidh_text_speed_custom = pygame.event.Event(filidh_text_speed)
 filidh_text_chr = 0
 filidh_repeat_counter = 0
 
@@ -79,6 +85,7 @@ filidh_dialogue_open.close()
 
 #filidh's lists
 filidh_events = [filidh_text_disappear, filidh_text_speed]
+filidh_custom_events = [filidh_text_disappear_custom, filidh_text_speed_custom]
 filidh_bools = [filidh_appear, red_door_appear, red_key_have, filidh_repeat, filidh_repeat_activate]
 filidh_temps = [filidh_text, filidh_text_temp, filidh_text_chr, filidh_repeat_counter]
 
@@ -88,6 +95,7 @@ castor = Character("Castor",
                    castor_dialogue, 
                    castor_images, 
                    castor_events, 
+                   castor_custom_events, 
                    castor_bools, 
                    castor_temps, 
                    castor_text_font, 
@@ -98,6 +106,7 @@ filidh = Character("Filidh",
                    filidh_dialogue, 
                    "", 
                    filidh_events, 
+                   filidh_custom_events, 
                    filidh_bools, 
                    filidh_temps, 
                    filidh_text_font, 
