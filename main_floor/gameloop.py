@@ -53,56 +53,78 @@ while running:
                     current = current[0:len(current)-1]
 
             #if user clicks enter
-            if event.key == pygame.K_RETURN:
+            if keyboard_enable:
+                if event.key == pygame.K_RETURN:
 
-                #sends message that user typed to submit() in functions.py and saves to two variables
-                #affect is what it changes, value is how much it changes or what it changes to
-                try:
-                    value, affect = functions.submit(current.replace(" ",""))
-                except:
-                    value, affect = "",""
+                    #sends message that user typed to submit() in functions.py and saves to two variables
+                    #affect is what it changes, value is how much it changes or what it changes to
+                    try:
+                        value, affect = functions.submit(current.replace(" ",""))
+                    except:
+                        value, affect = "",""
 
-                #print(value)
+                    #print(value)
 
-                #changes bg color, value is rgb
-                if affect == "screen_color":
-                    value = value.split(",")
-                    screen_col_a = int(value[0])
-                    screen_col_b = int(value[1])
-                    screen_col_c = int(value[2])
-                    castor.bools[0] = False
-                    #filidh.bools[0] = True
+                    #changes bg color, value is rgb
+                    if affect == "screen_color":
+                        value = value.split(",")
+                        screen_col_a = int(value[0])
+                        screen_col_b = int(value[1])
+                        screen_col_c = int(value[2])
+                        castor.bools[0] = False
+                        filidh.bools[0] = True
 
-                #interact with castor, value is what he says, what he is doing, etc.
-                if affect == "guide":
-                    if value == "meeting":
-                        screen_col_a = 158
-                        screen_col_b = 193
-                        screen_col_c = 245
-                        castor.bools[0] = True
-                        #filidh.bools[0] = False
-                        pygame.time.set_timer(castor.events[0],3500)
+                    #interact with castor, value is what he says, what he is doing, etc.
+                    if affect == "guide":
+                        if value == "meeting":
+                            screen_col_a = 158
+                            screen_col_b = 193
+                            screen_col_c = 245
+                            castor.bools[0] = True
+                            #filidh.bools[0] = False
+                            pygame.time.set_timer(castor.events[0],3500)
 
-                #interact with castor, and talk with him
-                if affect == "dialogue_Castor":
-                    keyboard_enable = False
-                    castor.temps[0] = ""
-                    castor.temps[1] = value
-                    pygame.time.set_timer(castor.events[1],20)
+                    #interact with castor, and talk with him
+                    if affect == "dialogue_Castor":
+                        keyboard_enable = False
+                        castor.temps[0] = ""
+                        castor.temps[1] = value
+                        pygame.time.set_timer(castor.events[1],20)
 
-                #whenever Filidh types
-                if affect == "dialogue_Filidh":
-                    pygame.time.set_timer(filidh.events[0],4000)
-                    filidh.temps[0] = ""
-                    filidh.temps[1] = value
-                    pygame.time.set_timer(filidh.events[1],5)
+                    #whenever Filidh types
+                    if affect == "dialogue_Filidh":
+                        keyboard_enable = False
+                        pygame.time.set_timer(filidh.events[0],4000)
+                        filidh.temps[0] = ""
+                        filidh.temps[1] = value
+                        pygame.time.set_timer(filidh.events[1],5)
 
-                #quits program
-                if affect == "quit":
-                    running = False
+                    #quits program
+                    if affect == "quit":
+                        running = False
 
-                #resets message after entering
-                current = '>'
+                    #this whole chunk is if you make f1 say the talk tutorial 3 times
+                    #if the repeat counter == 3, add one to repeat counter, turn off repeat, and turn on repeat_activate
+                    if filidh.temps[3] == 3:
+                        print(filidh.temps[3])
+                        filidh.temps[3] += 1
+                        filidh.bools[3] = False
+                        filidh.bools[4] = True
+                    #if the repeat counter == 5 ie after you make f3 angry, turn off appear so they stop talking
+                    if filidh.temps[3] == 5:
+                        print(filidh.temps[3])
+                        filidh.bools[0] = False
+                    #if repeat is True, add one to the repeat counter and disable repeat so that it can be renabled by the dialogue
+                    #if repeat is False, add one to the repeat counter and that is it.
+                    if filidh.bools[3]:
+                        filidh.temps[3] += 1
+                        print(filidh.temps[3])
+                        filidh.bools[3] = False
+                    elif not filidh.bools[3]:
+                        filidh.temps[3] += 1
+
+                    #resets message after entering
+                    current = '>'
 
         #timers for castor blinking
         #when castor appears, starts a timer. when the timer ends, castor starts blinking, which starts the timer again.

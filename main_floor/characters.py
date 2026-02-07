@@ -57,6 +57,8 @@ castor_temps = [castor_text, castor_text_temp, castor_text_chr]
 filidh_appear = True
 red_door_appear = False
 red_key_have = False
+filidh_repeat = False
+filidh_repeat_activate = False
 
 #filidh's text
 filidh_text = ""
@@ -67,6 +69,7 @@ filidh_text_rect = filidh_text_surface.get_rect(center=(screen.get_width()//2 + 
 filidh_text_disappear = pygame.event.custom_type()
 filidh_text_speed = pygame.event.custom_type()
 filidh_text_chr = 0
+filidh_repeat_counter = 0
 
 #filidh's dialogue
 filidh_dialogue_filepath = R"Terminal\filidh_dialogue.txt"
@@ -76,8 +79,8 @@ filidh_dialogue_open.close()
 
 #filidh's lists
 filidh_events = [filidh_text_disappear, filidh_text_speed]
-filidh_bools = [filidh_appear, red_door_appear, red_key_have]
-filidh_temps = [filidh_text, filidh_text_temp, filidh_text_chr]
+filidh_bools = [filidh_appear, red_door_appear, red_key_have, filidh_repeat, filidh_repeat_activate]
+filidh_temps = [filidh_text, filidh_text_temp, filidh_text_chr, filidh_repeat_counter]
 
 #characters
 #name,dialogue,images,appear,text_font,text_surface
