@@ -1,6 +1,6 @@
 import pygame
 import functions 
-from characters import castor, filidh, all_characters
+from characters import castor, filidh, all_characters, all_talking
 
 #sets initial screen
 screen_x = 200
@@ -89,14 +89,16 @@ while running:
                     #interact with castor, and talk with him
                     if affect == "dialogue_Castor":
                         pygame.event.post(filidh.custom_events[0])
-                        keyboard_enable = False
+                        castor.bools[3] = True
+                        print("disabled false c")
                         castor.temps[0] = ""
                         castor.temps[1] = value
                         pygame.time.set_timer(castor.events[1],20)
 
                     #whenever Filidh types
                     if affect == "dialogue_Filidh":
-                        keyboard_enable = False
+                        filidh.bools[5] = True
+                        print("disabled false f")
                         pygame.time.set_timer(filidh.events[0],4000)
                         filidh.temps[0] = ""
                         filidh.temps[1] = value
@@ -125,6 +127,11 @@ while running:
                     #resets message after entering
                     current = '>'
 
+        if sum(all_talking) == 1:
+            keyboard_enable = False
+        else:
+            keyboard_enable = True
+
         #timers for castor blinking
         #when castor appears, starts a timer. when the timer ends, castor starts blinking, which starts the timer again.
         #when the timer ends, castor stops blinking and starts the timer again to eventually start blinking. looping
@@ -144,10 +151,10 @@ while running:
         if event.type == castor.events[1]:
             next_char = functions.talk_speed(castor.temps[1], castor.temps[2])
             if next_char == "stop":
-                keyboard_enable = True
+                castor.bools[3] = False
+                #print(next_char)
                 castor.temps[1] = ''
                 castor.temps[2] = 0
-                pass
             else:
                 if castor.temps[1][castor.temps[2]] == '#':
                     castor.temps[0] += "\n"
@@ -157,14 +164,14 @@ while running:
                     castor.temps[0] += next_char
                 castor.temps[2] += 1
                 pygame.time.set_timer(castor.events[1],20)
-
+        
         if event.type == filidh.events[1]:
             next_char = functions.talk_speed(filidh.temps[1], filidh.temps[2])
             if next_char == "stop":
-                keyboard_enable = True
+                filidh.bools[5] = False
+                #print(next_char)
                 filidh.temps[1] = ''
                 filidh.temps[2] = 0
-                pass
             else:
                 if filidh.temps[1][filidh.temps[2]] == '#':
                     filidh.temps[0] += "\n"
