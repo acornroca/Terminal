@@ -31,7 +31,6 @@ castor_blink_custom = pygame.event.Event(castor_blink)
 castor_appear = False
 castor_blinking = False
 castor_sleeping = True
-castor_tswitch = False
 
 #castor's text
 castor_text = "zzz"
@@ -53,7 +52,7 @@ castor_dialogue_open.close()
 castor_images = [castor_idle, castor_idle2]
 castor_events = [castor_blink, castor_text_speed]
 castor_custom_events = [castor_blink_custom, castor_text_speed_custom]
-castor_bools = [castor_appear, castor_blinking, castor_sleeping, castor_tswitch]
+castor_bools = [castor_appear, castor_blinking, castor_sleeping]
 castor_temps = [castor_text, castor_text_temp, castor_text_chr]
 
 #- - - - - - - - FILIDH - - - - - - - -#
@@ -64,7 +63,6 @@ red_door_appear = False
 red_key_have = False
 filidh_repeat = False
 filidh_repeat_activate = False
-filidh_tswitch = False
 
 #filidh's text
 filidh_text = ""
@@ -88,7 +86,7 @@ filidh_dialogue_open.close()
 #filidh's lists
 filidh_events = [filidh_text_disappear, filidh_text_speed]
 filidh_custom_events = [filidh_text_disappear_custom, filidh_text_speed_custom]
-filidh_bools = [filidh_appear, red_door_appear, red_key_have, filidh_repeat, filidh_repeat_activate, filidh_tswitch]
+filidh_bools = [filidh_appear, red_door_appear, red_key_have, filidh_repeat, filidh_repeat_activate]
 filidh_temps = [filidh_text, filidh_text_temp, filidh_text_chr, filidh_repeat_counter]
 
 #characters
@@ -120,6 +118,3 @@ all_characters = [castor,filidh]
 
 #list of all Characters appeared
 all_appeared = [filidh.bools[0],castor.bools[0]]
-
-#lost of all Characters talking
-all_talking = [filidh.bools[5],castor.bools[3]]
