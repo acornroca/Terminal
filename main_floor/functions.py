@@ -239,6 +239,7 @@ def submit(phrase):
                 except:
                     pass
             
+    #displays error message if command not found
     if sum(characters.all_appeared) == 1 and characters.all_appeared[0] == True:
         talk = get_dialogue(characters.filidh,phrase)
         if talk != None:

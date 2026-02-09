@@ -158,7 +158,8 @@ while running:
                     castor.temps[0] += next_char
                 castor.temps[2] += 1
                 pygame.time.set_timer(castor.events[1],20)
-        
+
+        #Like castor's but for filidh's text
         if event.type == filidh.events[1]:
             next_char = functions.talk_speed(filidh.temps[1], filidh.temps[2])
             if next_char == "stop":
@@ -177,6 +178,7 @@ while running:
                 filidh.temps[2] += 1
                 pygame.time.set_timer(filidh.events[1],5)
 
+        #decides when the text disappears from screen
         if event.type == filidh.events[0]:
             filidh.temps[0] = ""
 
