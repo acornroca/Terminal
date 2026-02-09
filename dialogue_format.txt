@@ -1,11 +1,11 @@
 This file serves no purpose in the game,
 but is for whoever is reading this to understand what the heck is going on the dialogue files.
 
-This is the first of Castor's lines
+This was the first of Castor's lines during development
 
-    @,oh hi!,0:t/2:t,2->f
+    @|oh hi!|Castor=0:t/Castor=2:t|Castor=2->f
 
-Seperated by commas, the first section is all the acceptable phrases to trigger the dialogue.
+Seperated by |, the first section is all the acceptable phrases to trigger the dialogue.
 @ means any phrase is accepted.
 Usually they are seperated by / for multiple options of acceptable phrases.
 
@@ -18,11 +18,13 @@ _ represents 40 spaces (so it stays on the previous page for longer before chang
 
 The third section is the booleans necessary to trigger the dialogue other than the acceptable phrases.
 They are seperated by / for multiple booleans.
+The name before the = decides who's boolean it is checking
 The number is the list index in the Character object's bools list.
 The t or f after the : means whether or not it has to be True or False.
 
 The fourth section is what booleans this phrase should flip.
 They are seperated by / for multiple booleans.
+The name before the = decides who's boolean it is affecting
 The number is the lsit index int he Characcter object's bools list.
 the t or f after the -> means what the boolean will flip to.
 
