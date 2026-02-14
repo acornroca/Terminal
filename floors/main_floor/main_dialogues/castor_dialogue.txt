@@ -1,5 +1,5 @@
 @|hmm?_$woah I never expected anyone#to ever go in this terminal again._$I've just been hanging out#at this color cause#it looks nice|Castor=0:t/Castor=2:t|Castor=2->f
-reddoor|Oh the red door._$Fortunately for you#that's the only key I possess._$Here, have fun|Castor=0:t|
+reddoor|Oh the red door._$Fortunately for you#that's the only key I possess._$Here, have fun|Castor=0:t|Filidh=2->t
 door|Door?_$Which one?#Please be more specific...|Castor=0:t|
 whoareyou/whoareu/whoryou/whoru/whoyou/whou|I'm Castor!#I'll be guiding you through this terminal.|Castor=0:t|
 whoami/whoi| |Castor=0:t|

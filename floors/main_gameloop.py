@@ -1,11 +1,13 @@
 import pygame
-import functions 
-from characters import castor, filidh, all_characters
+import main_functions
+from uni_files.characters import castor, filidh
 
 #sets initial screen
 screen_x = 0
 screen_y = 0
 screen = pygame.display.set_mode((screen_y, screen_y))
+
+pygame.display.set_caption("TERMINAL")
 
 #color of bg
 screen_col_a = 255
@@ -19,7 +21,7 @@ typing_surface = typing_font.render(current, True, (0,0,0))
 keyboard_enable = True
 
 #door image
-door = pygame.image.load(R"Terminal\main_floor\door.png").convert_alpha()
+door = pygame.image.load(R"Terminal\floors\main_floor\main_images\door.png").convert_alpha()
 
 #clock
 clock = pygame.time.Clock()
@@ -48,7 +50,7 @@ while running:
         #if user clicks any button
         if event.type == pygame.KEYDOWN:
             if keyboard_enable:
-                current += functions.keyboard_inputs(event.key)
+                current += main_functions.keyboard_inputs(event.key)
 
             #if user clicks backspace
             if event.key == pygame.K_BACKSPACE:
@@ -62,7 +64,7 @@ while running:
                     #sends message that user typed to submit() in functions.py and saves to two variables
                     #affect is what it changes, value is how much it changes or what it changes to
                     try:
-                        value, affect = functions.submit(current.replace(" ",""))
+                        value, affect = main_functions.submit(current.replace(" ",""))
                     except:
                         value, affect = "",""
 
@@ -90,7 +92,6 @@ while running:
                     #interact with castor, and talk with him
                     if affect == "dialogue_Castor":
                         keyboard_enable = False
-                        print("disabled false c")
                         castor.temps[0] = ""
                         castor.temps[1] = value
                         pygame.time.set_timer(castor.events[1],20)
@@ -98,7 +99,6 @@ while running:
                     #whenever Filidh types
                     if affect == "dialogue_Filidh":
                         keyboard_enable = False
-                        print("disabled false f")
                         pygame.time.set_timer(filidh.events[0],4000)
                         filidh.temps[0] = ""
                         filidh.temps[1] = value
@@ -126,6 +126,10 @@ while running:
                     #resets message after entering
                     current = '>'
 
+        if event.type == filidh.events[2]:
+            print("attempting to quit")
+            running = False
+
         #timers for castor blinking
         #when castor appears, starts a timer. when the timer ends, castor starts blinking, which starts the timer again.
         #when the timer ends, castor stops blinking and starts the timer again to eventually start blinking. looping
@@ -143,7 +147,7 @@ while running:
         #if it sees #, it goes to the next line.
         #if it sees $, it goes to the next page.
         if event.type == castor.events[1]:
-            next_char = functions.talk_speed(castor.temps[1], castor.temps[2])
+            next_char = main_functions.talk_speed(castor.temps[1], castor.temps[2])
             if next_char == "stop":
                 keyboard_enable = True
                 castor.temps[1] = ''
@@ -161,10 +165,9 @@ while running:
 
         #Like castor's but for filidh's text
         if event.type == filidh.events[1]:
-            next_char = functions.talk_speed(filidh.temps[1], filidh.temps[2])
+            next_char = main_functions.talk_speed(filidh.temps[1], filidh.temps[2])
             if next_char == "stop":
                 keyboard_enable = True
-                print(next_char)
                 filidh.temps[1] = ''
                 filidh.temps[2] = 0
                 pygame.time.set_timer(filidh.events[1],0)
@@ -213,6 +216,12 @@ while running:
     if screen_col_a == 255 and screen_col_b == 0 and screen_col_c == 0:
         screen.blit(door, (screen.get_width()//4 + 100, screen.get_height()//6))
         filidh.bools[1] = True
+    else:
+        filidh.bools[1] = False
+
+    if filidh.bools[6]:
+        print("activated")
+        pygame.time.set_timer(filidh.events[2], 2000)
 
     #renders all changes to window
     pygame.display.flip()
