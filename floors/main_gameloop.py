@@ -127,7 +127,8 @@ while running:
                     current = '>'
 
         if event.type == filidh.events[2]:
-            print("attempting to quit")
+            with open (R"Terminal\floors\uni_files\level_checker.txt", 'w') as file:
+                file.write("0\n1")
             running = False
 
         #timers for castor blinking
@@ -220,7 +221,9 @@ while running:
         filidh.bools[1] = False
 
     if filidh.bools[6]:
-        print("activated")
+        filidh.bools[6] = False
+        filidh.changer[1] = True
+        print(filidh.changer[1])
         pygame.time.set_timer(filidh.events[2], 2000)
 
     #renders all changes to window

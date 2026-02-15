@@ -1,16 +1,39 @@
 import subprocess
 import sys
 import pygame
-from floors.uni_files.characters import filidh
 
-pygame.quit()
-
+level_checker_txt = R"Terminal\floors\uni_files\level_checker.txt"
 main_file_path = R"Terminal\floors\main_gameloop.py"
 red_file_path = R"Terminal\floors\red_gameloop.py"
 
-subprocess.run([sys.executable, main_file_path])
+main = False
+red = False
 
-if filidh.bools[6]:
-    filidh.bools[6] = False
-    print("test")
-    subprocess.run([sys.executable, red_file_path])
+level_change = [main,red]
+
+running = True
+while running:
+
+    level_num = 0
+    with open(level_checker_txt, 'r') as file:
+        lines = file.read()
+        for line in lines.split("\n"):
+            if line == "1":
+                print("enabled")
+                level_change[level_num] = True
+                break
+            level_num += 1
+
+    if level_change[1]:
+        print("red true")
+
+    with open(level_checker_txt, 'w') as file:
+        file.write("0\n0")
+
+        if level_change[0]:
+            subprocess.run([sys.executable, main_file_path])
+            level_change[0] = False
+
+        if level_change[1]:
+            subprocess.run([sys.executable, red_file_path])
+            level_change[1] = False
