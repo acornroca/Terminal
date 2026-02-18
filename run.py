@@ -6,6 +6,7 @@ level_checker_txt = R"Terminal\floors\uni_files\level_checker.txt"
 main_file_path = R"Terminal\floors\main_gameloop.py"
 red_file_path = R"Terminal\floors\red_gameloop.py"
 
+switch = False
 main = False
 red = False
 
@@ -20,15 +21,15 @@ while running:
         for line in lines.split("\n"):
             if line == "1":
                 print("enabled")
+                switch = True
                 level_change[level_num] = True
                 break
             level_num += 1
 
-    if level_change[1]:
-        print("red true")
-
-    with open(level_checker_txt, 'w') as file:
-        file.write("0\n0")
+    if switch:
+        with open(level_checker_txt, 'w') as file:
+            file.write("0\n0")
+        switch = False
 
         if level_change[0]:
             subprocess.run([sys.executable, main_file_path])
