@@ -3,100 +3,6 @@ import uni_files.characters as characters
 
 pygame.init()
 
-#input: key being pressed by user
-#processing: figures out which key was pressed
-#output: returns coresponding letter
-def keyboard_inputs(key):
-    if key == pygame.K_q:
-        return "q"
-    elif key == pygame.K_w:
-        return "w"
-    elif key == pygame.K_e:
-        return "e"
-    elif key == pygame.K_r:
-        return "r"
-    elif key == pygame.K_t:
-        return "t"
-    elif key == pygame.K_y:
-        return "y"
-    elif key == pygame.K_u:
-        return "u"
-    elif key == pygame.K_i:
-        return "i"
-    elif key == pygame.K_o:
-        return "o"
-    elif key == pygame.K_p:
-        return "p"
-    elif key == pygame.K_a:
-        return "a"
-    elif key == pygame.K_s:
-        return "s"
-    elif key == pygame.K_d:
-        return "d"
-    elif key == pygame.K_f:
-        return "f"
-    elif key == pygame.K_g:
-        return "g"
-    elif key == pygame.K_h:
-        return "h"
-    elif key == pygame.K_j:
-        return "j"
-    elif key == pygame.K_k:
-        return "k"
-    elif key == pygame.K_l:
-        return "l"
-    elif key == pygame.K_z:
-        return "z"
-    elif key == pygame.K_x:
-        return "x"
-    elif key == pygame.K_c:
-        return "c"
-    elif key == pygame.K_v:
-        return "v"
-    elif key == pygame.K_b:
-        return "b"
-    elif key == pygame.K_n:
-        return "n"
-    elif key == pygame.K_m:
-        return "m"
-    elif key == pygame.K_SPACE:
-        return " "
-    elif key == pygame.K_0:
-        return "0"
-    elif key == pygame.K_1:
-        return "1"
-    elif key == pygame.K_2:
-        return "2"
-    elif key == pygame.K_3:
-        return "3"
-    elif key == pygame.K_4:
-        return "4"
-    elif key == pygame.K_5:
-        return "5"
-    elif key == pygame.K_6:
-        return "6"
-    elif key == pygame.K_7:
-        return "7"
-    elif key == pygame.K_8:
-        return "8"
-    elif key == pygame.K_9:
-        return "9"
-    elif key == pygame.K_COMMA:
-        return ","
-    return ""
-
-#input: the phrase typed by user, and what the index of the character that is going to be displayed next
-#processing: if there are more characters, return the next character
-#output: next character in string
-def talk_speed(phrase, chr):
-    try:
-        if not chr >= len(phrase):
-            return phrase[chr]
-        else:
-            return "stop"
-    except:
-        return "stop"
-
 #input: npc talking and phrase that the user typed out 
 #processing: search in the files of the text file, find the line with the same phrase as what the user typed,
 #            divide the parts up, makes sure the right booleans are True and False, switches the booleans that are listed,
@@ -169,7 +75,7 @@ def get_dialogue(npc, phrase):
                 pass
 
             #print(npc.name + " got somethin")
-            return parts[1].replace('_',"                                        ") #40 spaces
+            return parts[1].replace('_',"                    ") #20 spaces
 
     #print(npc.name + " got nothing")
     return None

@@ -7,6 +7,7 @@ main_file_path = R"Terminal\floors\main_gameloop.py"
 red_file_path = R"Terminal\floors\red_gameloop.py"
 
 switch = False
+quit = False
 main = False
 red = False
 
@@ -24,12 +25,18 @@ while running:
                 switch = True
                 level_change[level_num] = True
                 break
+            elif line == "2":
+                switch = True
+                quit = True
             level_num += 1
 
     if switch:
         with open(level_checker_txt, 'w') as file:
             file.write("0\n0")
         switch = False
+
+        if quit:
+            sys.exit()
 
         if level_change[0]:
             subprocess.run([sys.executable, main_file_path])

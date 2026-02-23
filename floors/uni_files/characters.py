@@ -44,6 +44,9 @@ castor_blink_custom = pygame.event.Event(castor_blink)
 castor_appear = False
 castor_blinking = False
 castor_sleeping = True
+castor_care1 = True
+castor_care2 = False
+castor_care3 = False
 
 #castor's text
 castor_text = "zzz"
@@ -65,7 +68,7 @@ castor_dialogue_open.close()
 castor_images = [castor_idle, castor_idle2]
 castor_events = [castor_blink, castor_text_speed]
 castor_custom_events = [castor_blink_custom, castor_text_speed_custom]
-castor_bools = [castor_appear, castor_blinking, castor_sleeping]
+castor_bools = [castor_appear, castor_blinking, castor_sleeping, castor_care1, castor_care2, castor_care3]
 castor_temps = [castor_text, castor_text_temp, castor_text_chr]
 
 #- - - - - - - - FILIDH - - - - - - - -#
@@ -73,7 +76,7 @@ castor_temps = [castor_text, castor_text_temp, castor_text_chr]
 #filidh bools
 filidh_appear = True
 red_door_appear = False
-red_key_have = True
+red_key_have = False
 filidh_repeat = False
 filidh_repeat_activate = False
 filidh_change_main = False

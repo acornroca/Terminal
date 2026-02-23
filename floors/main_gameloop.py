@@ -1,6 +1,9 @@
 import pygame
+import random
 import main_functions
 from uni_files.characters import castor, filidh
+from uni_files.keyboard import keyboard_inputs
+from uni_files.talk_speed import talk_speed
 
 #sets initial screen
 screen_x = 0
@@ -22,6 +25,8 @@ keyboard_enable = True
 
 #door image
 door = pygame.image.load(R"Terminal\floors\main_floor\main_images\door.png").convert_alpha()
+
+castor_care_random = 1
 
 #clock
 clock = pygame.time.Clock()
@@ -45,12 +50,14 @@ while running:
 
         #if user closes window
         if event.type == pygame.QUIT:
+            with open(R"Terminal\floors\uni_files\level_checker.txt", 'w') as file:
+               file.write("2")
             running = False
 
         #if user clicks any button
         if event.type == pygame.KEYDOWN:
             if keyboard_enable:
-                current += main_functions.keyboard_inputs(event.key)
+                current += keyboard_inputs(event.key)
 
             #if user clicks backspace
             if event.key == pygame.K_BACKSPACE:
@@ -106,6 +113,8 @@ while running:
 
                     #quits program
                     if affect == "quit":
+                        with open(R"Terminal\floors\uni_files\level_checker.txt", 'w') as file:
+                            file.write("2")
                         running = False
 
                     #this whole chunk is if you make f1 say the talk tutorial 3 times
@@ -148,7 +157,7 @@ while running:
         #if it sees #, it goes to the next line.
         #if it sees $, it goes to the next page.
         if event.type == castor.events[1]:
-            next_char = main_functions.talk_speed(castor.temps[1], castor.temps[2])
+            next_char = talk_speed(castor.temps[1], castor.temps[2])
             if next_char == "stop":
                 keyboard_enable = True
                 castor.temps[1] = ''
@@ -166,7 +175,7 @@ while running:
 
         #Like castor's but for filidh's text
         if event.type == filidh.events[1]:
-            next_char = main_functions.talk_speed(filidh.temps[1], filidh.temps[2])
+            next_char = talk_speed(filidh.temps[1], filidh.temps[2])
             if next_char == "stop":
                 keyboard_enable = True
                 filidh.temps[1] = ''
@@ -180,11 +189,26 @@ while running:
                 else:
                     filidh.temps[0] += next_char
                 filidh.temps[2] += 1
-                pygame.time.set_timer(filidh.events[1],5)
+                pygame.time.set_timer(filidh.events[1],2)
 
         #decides when the text disappears from screen
         if event.type == filidh.events[0]:
             filidh.temps[0] = ""
+
+        if not castor.bools[0]:
+            castor_care_random = random.randint(1,3)
+            if castor_care_random == 1:
+                castor.bools[3] = True
+                castor.bools[4] = False
+                castor.bools[5] = False
+            if castor_care_random == 2:
+                castor.bools[3] = False
+                castor.bools[4] = True
+                castor.bools[5] = False
+            if castor_care_random == 3:
+                castor.bools[3] = False
+                castor.bools[4] = False
+                castor.bools[5] = True
 
     #paints over frame
     screen.fill((screen_col_a,screen_col_b,screen_col_c))

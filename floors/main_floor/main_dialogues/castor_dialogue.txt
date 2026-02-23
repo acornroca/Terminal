@@ -1,9 +1,18 @@
-@|hmm?_$woah I never expected anyone#to ever go in this terminal again._$I've just been hanging out#at this color cause#it looks nice|Castor=0:t/Castor=2:t|Castor=2->f
-reddoor|Oh the red door._$Fortunately for you#that's the only key I possess._$Here, have fun|Castor=0:t|Filidh=2->t
-door|Door?_$Which one?#Please be more specific...|Castor=0:t|
-whoareyou/whoareu/whoryou/whoru/whoyou/whou|I'm Castor!#I'll be guiding you through this terminal.|Castor=0:t|
-whoami/whoi| |Castor=0:t|
-wherearewe/whereami/wherewe/wherei| |Castor=0:t|
-whatareyou/whatareu/whatyou/whatu| |Castor=0:t|
+@|hmm?__$Oh hello!__$I'm Castor._#I am the guide#of this terminal.__$I presume you are also here#to find the meaning of life?__$If you have any questions,#just ask me and I will by happy# to answer it for you!__$If I have an answer for it#in my database of course.|Castor=0:t/Castor=2:t|Castor=2->f
+reddoor|Ah, the red door.__$Fortunately for you#that's the only key I possess.__$Here, have fun|Castor=0:t|Filidh=2->t
+door|Door?__$Which one?_#Please be more specific.|Castor=0:t|
+whoareyou/whoareu/whoryou/whoru/whoyou/whou|I'm Castor!#I'll be guiding you through this terminal.__$If you have any questions #or general statements#I'll try my best to respond to them.|Castor=0:t|
+whoami/whoi|You would know the answer#to that question#better than I would.__$Perhaps you want to know#what the point of it all is.|Castor=0:t|
+wherearewe/whereami/wherewe/wherei|This is Terminal FM09193110002_#Though I suppose that means#very little to you.__$This is a terminal used#to find information of all kinds.__$I hope you find#what you are#looking for in here.|Castor=0:t|
+whatareyou/whatareu/whatyou/whatu|How mean,_#calling me a "what"._#Though I suppose I am digital.__$I am basically a#glorified text document#that responds to your inputs.__$My creator put a lot of dialogue in me,#so if you don't get an actual response,#you need to type more #relevant statements.|Castor=0:t|
+cat|Yes, it seems like a cat#may be the only thing that#my creator can draw.__$I hope you find my appearance#comforting.|Castor=0:t|
+star|It is of my understanding#that cats in the "real world"#don't have stars on their tails.__$Perhaps to differentiate my#appearance compared to the real thing.|Castor=0:t|
+color|Ah yes,#I suppose you know by now colors are#how you traverse this terminal.__$And by extension,#RGB values as well.__$Try typing a random value,_#maybe you'll find something.__$Nothing that'll be important#for whatever you are trying to find#though.|Castor=0:t|
+iamcute/icute/iampretty/ipretty/iamhandsome/ihandsome/ihandsome/iamhot/ihot|Oh yes, I agree._#I can see you through the camera#on top of your computer.__$I jest,#I cannot see through your camera.__$Though I am sure you are.|Castor=0:t|
+youarecute/youcute/ucute/youarepretty/youpretty/upretty/youarehandsome/youhandsome/uhandsome/youarehot/youhot/uhot|Thank you for your#kind words.__$Though that says more about #my creator's skills then anything#related to me.|Castor=0:t|
+hi/hello/hey/sup|Hi._#How can I help you?|Castor=0:t|
+whatsup/whatup/howareyou/howryou/howru/howareu/howu|Just hanging out in this color.__$It's quite nice,#easy on the eyes.|Castor=0:t/Castor=3:t|
+whatsup/whatup/howareyou/howryou/howru/howareu/howu|It can get a bit lonely.__$They say that it goes away#after a while.__$I have yet to#reach that point.|Castor=0:t/Castor=4:t|
+whatsup/whatup/howareyou/howryou/howru/howareu/howu|Eh, been better.__$Maybe I'll try exploring the#other colors.__$I've seen them all,#but maybe I'll find#something new.|Castor=0:t/Castor=5:t|
 limbus/limbuscompany|I LOVE LIMBUS COMPANY#I DON'T CARE WHAT ANYONE SAYS#CANTO 9 WAS GAS|Castor=0:t|
-@|Apologies#I do not understand what you just entered...|Castor=0:t|
+@|Apologies,#my creator did not anticipate#that input.|Castor=0:t|
