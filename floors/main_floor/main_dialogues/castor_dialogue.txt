@@ -5,14 +5,15 @@ whoareyou/whoareu/whoryou/whoru/whoyou/whou|I'm Castor!#I'll be guiding you thro
 whoami/whoi|You would know the answer#to that question#better than I would.__$Perhaps you want to know#what the point of it all is.|Castor=0:t|
 wherearewe/whereami/wherewe/wherei|This is Terminal FM09193110002_#Though I suppose that means#very little to you.__$This is a terminal used#to find information of all kinds.__$I hope you find#what you are#looking for in here.|Castor=0:t|
 whatareyou/whatareu/whatyou/whatu|How mean,_#calling me a "what"._#Though I suppose I am digital.__$I am basically a#glorified text document#that responds to your inputs.__$My creator put a lot of dialogue in me,#so if you don't get an actual response,#you need to type more #relevant statements.|Castor=0:t|
+whatami/whati|A human being?#I don't know__$Maybe the aliens have#come and taken over#the world by now|Castor=0:t|
 cat|Yes, it seems like a cat#may be the only thing that#my creator can draw.__$I hope you find my appearance#comforting.|Castor=0:t|
 star|It is of my understanding#that cats in the "real world"#don't have stars on their tails.__$Perhaps to differentiate my#appearance compared to the real thing.|Castor=0:t|
 color|Ah yes,#I suppose you know by now colors are#how you traverse this terminal.__$And by extension,#RGB values as well.__$Try typing a random value,_#maybe you'll find something.__$Nothing that'll be important#for whatever you are trying to find#though.|Castor=0:t|
 iamcute/icute/iampretty/ipretty/iamhandsome/ihandsome/ihandsome/iamhot/ihot|Oh yes, I agree._#I can see you through the camera#on top of your computer.__$I jest,#I cannot see through your camera.__$Though I am sure you are.|Castor=0:t|
-youarecute/youcute/ucute/youarepretty/youpretty/upretty/youarehandsome/youhandsome/uhandsome/youarehot/youhot/uhot|Thank you for your#kind words.__$Though that says more about #my creator's skills then anything#related to me.|Castor=0:t|
-hi/hello/hey/sup|Hi._#How can I help you?|Castor=0:t|
-whatsup/whatup/howareyou/howryou/howru/howareu/howu|Just hanging out in this color.__$It's quite nice,#easy on the eyes.|Castor=0:t/Castor=3:t|
-whatsup/whatup/howareyou/howryou/howru/howareu/howu|It can get a bit lonely.__$They say that it goes away#after a while.__$I have yet to#reach that point.|Castor=0:t/Castor=4:t|
-whatsup/whatup/howareyou/howryou/howru/howareu/howu|Eh, been better.__$Maybe I'll try exploring the#other colors.__$I've seen them all,#but maybe I'll find#something new.|Castor=0:t/Castor=5:t|
+youarecute/uarecute/yourcute/urcute/youcute/ucute/youarepretty/yourpretty/uarepretty/urpretty/youpretty/upretty/youarehandsome/yourhandsome/uarehandsome/uhandsome/urhandsome/youhandsome/uhandsome/youarehot/yourhot/uarehot/urhot/youhot/uhot|Thank you for your#kind words.__$Though that says more about #my creator's skills then anything#related to me.|Castor=0:t|
+hi/hello/hey|Hi._#How can I help you?|Castor=0:t|
+whatsup/whatup/whatisup/sup/howareyou/howryou/howru/howareu/howu|Just hanging out in this color.__$It's quite nice,#easy on the eyes.|Castor=0:t/Castor=3:t|
+whatsup/whatup/whatisup/sup/howareyou/howryou/howru/howareu/howu|It can get a bit lonely.__$They say that it goes away#after a while.__$I have yet to#reach that point.|Castor=0:t/Castor=4:t|
+whatsup/whatisup/whatup/sup/howareyou/howryou/howru/howareu/howu|Eh, been better.__$Maybe I'll try exploring the#other colors.__$I've seen them all,#but maybe I'll find#something new.|Castor=0:t/Castor=5:t|
 limbus/limbuscompany|I LOVE LIMBUS COMPANY#I DON'T CARE WHAT ANYONE SAYS#CANTO 9 WAS GAS|Castor=0:t|
 @|Apologies,#my creator did not anticipate#that input.|Castor=0:t|

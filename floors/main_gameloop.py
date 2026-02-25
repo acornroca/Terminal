@@ -1,16 +1,16 @@
 import pygame
 import random
 import main_functions
-from uni_files.characters import castor, filidh
 from uni_files.keyboard import keyboard_inputs
 from uni_files.talk_speed import talk_speed
+from uni_files.characters import castor, filidh, items
 
 #sets initial screen
 screen_x = 0
 screen_y = 0
 screen = pygame.display.set_mode((screen_y, screen_y))
 
-pygame.display.set_caption("TERMINAL")
+pygame.display.set_caption("TERMINAL_FM09193110002")
 
 #color of bg
 screen_col_a = 255
@@ -210,6 +210,11 @@ while running:
                 castor.bools[4] = False
                 castor.bools[5] = True
 
+    #items
+    if not "red key" in items:
+        if filidh.bools[2]:
+            items.append("red key")
+
     #paints over frame
     screen.fill((screen_col_a,screen_col_b,screen_col_c))
 
@@ -246,8 +251,6 @@ while running:
 
     if filidh.bools[6]:
         filidh.bools[6] = False
-        filidh.changer[1] = True
-        print(filidh.changer[1])
         pygame.time.set_timer(filidh.events[2], 2000)
 
     #renders all changes to window

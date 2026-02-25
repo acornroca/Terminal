@@ -6,20 +6,10 @@ screen_x = 0
 screen_y = 0
 screen = pygame.display.set_mode((screen_y, screen_y))
 
-class Player:
-    def __init__(self,bools):
-        self.items = []
-        self.bools = bools
-
-    def add_item(self, item):
-        self.items.add(item)
-
-player_bools = []
-
-player = Player(player_bools)
+items = []
 
 class Character:
-    def __init__(self,name,dialogue,images,events,custom_events,bools,temps,text_font,text_surface,text_rect,changer):
+    def __init__(self,name,dialogue,images,events,custom_events,bools,temps,text_font,text_surface,text_rect):
         self.name = name
         self.dialogue = dialogue
         self.images = images
@@ -30,7 +20,6 @@ class Character:
         self.text_font = text_font
         self.text_surface = text_surface
         self.text_rect = text_rect
-        self.changer = changer #only filidh
 
 #- - - - - - - - CASTOR - - - - - - - -#
 
@@ -103,16 +92,11 @@ filidh_dialogue_open = open(filidh_dialogue_filepath)
 filidh_dialogue = filidh_dialogue_open.read()
 filidh_dialogue_open.close()
 
-#changer
-c_main = False
-c_red = False
-
 #filidh's lists
 filidh_events = [filidh_text_disappear, filidh_text_speed, filidh_change_timer]
 filidh_custom_events = [filidh_text_disappear_custom, filidh_text_speed_custom, filidh_change_timer_custom]
 filidh_bools = [filidh_appear, red_door_appear, red_key_have, filidh_repeat, filidh_repeat_activate, filidh_change_main, filidh_change_red] #remember to save for other colors
 filidh_temps = [filidh_text, filidh_text_temp, filidh_text_chr, filidh_repeat_counter]
-filidh_changer = [c_main,c_red]
 
 #characters
 #name,dialogue,images,appear,text_font,text_surface
@@ -125,8 +109,7 @@ castor = Character("Castor",
                    castor_temps, 
                    castor_text_font, 
                    castor_text_surface,
-                   castor_text_rect,
-                   "")
+                   castor_text_rect)
 
 filidh = Character("Filidh", 
                    filidh_dialogue, 
@@ -137,8 +120,7 @@ filidh = Character("Filidh",
                    filidh_temps, 
                    filidh_text_font, 
                    filidh_text_surface,
-                   filidh_text_rect,
-                   filidh_changer)
+                   filidh_text_rect)
 
 #list of all Characters
 all_characters = [castor,filidh]
