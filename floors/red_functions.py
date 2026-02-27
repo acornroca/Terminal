@@ -21,6 +21,9 @@ def submit(phrase):
                         return talk, "dialogue_" + chr.name
                 except:
                     pass
+
+    if phrase == "open README":
+        return "", "open_window"
             
     #displays error message if command not found
     if sum(characters.all_appeared) == 1 and characters.all_appeared[0] == True:

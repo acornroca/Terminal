@@ -1,5 +1,7 @@
 import pygame
 import random
+import subprocess
+import sys
 import main_functions
 from uni_files.keyboard import keyboard_inputs
 from uni_files.talk_speed import talk_speed
@@ -8,7 +10,7 @@ from uni_files.characters import castor, filidh, items
 #sets initial screen
 screen_x = 0
 screen_y = 0
-screen = pygame.display.set_mode((screen_y, screen_y))
+screen = pygame.display.set_mode((screen_x, screen_y))
 
 pygame.display.set_caption("TERMINAL_FM09193110002")
 
@@ -23,9 +25,17 @@ current = ">"
 typing_surface = typing_font.render(current, True, (0,0,0))
 keyboard_enable = True
 
-#door image
+#images
 door = pygame.image.load(R"Terminal\floors\main_floor\main_images\door.png").convert_alpha()
+basic_file = pygame.image.load(R"Terminal\floors\main_floor\main_images\file.png").convert_alpha()
+basic_file = pygame.transform.scale(basic_file, (100,110))
 
+#basic display text
+help_file_font = pygame.font.Font(R"Terminal\floors\uni_files\Terminal.ttf", 17)
+help_file_surface = help_file_font.render("README.txt", True, (0,0,0))
+#help_file_rect = help_file_surface.get_rect(center=(screen.get_width()//4 + 100, screen.get_height()//6))
+
+#int to randomize what castor will say when asked how they are doing
 castor_care_random = 1
 
 #clock
@@ -95,6 +105,7 @@ while running:
                             castor.bools[0] = True
                             #filidh.bools[0] = False
                             pygame.time.set_timer(castor.events[0],3500)
+                            subprocess.run([sys.executable, R"Terminal\floors\uni_files\open_window.py"])
 
                     #interact with castor, and talk with him
                     if affect == "dialogue_Castor":
@@ -248,6 +259,11 @@ while running:
         filidh.bools[1] = True
     else:
         filidh.bools[1] = False
+
+    #files
+    if screen_col_a == 255 and screen_col_b == 255 and screen_col_c == 255:
+        screen.blit(basic_file, (screen.get_width()//4 + 200, screen.get_height()//4+100))
+        screen.blit(help_file_surface, (screen.get_width()//4 + 205, screen.get_height()//4+215))
 
     if filidh.bools[6]:
         filidh.bools[6] = False

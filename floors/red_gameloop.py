@@ -9,7 +9,7 @@ pygame.init()
 #sets initial screen
 screen_x = 0
 screen_y = 0
-screen = pygame.display.set_mode((screen_y, screen_y))
+screen = pygame.display.set_mode((screen_x, screen_y))
 
 pygame.display.set_caption("TERMINAL_FM09193110002")
 
