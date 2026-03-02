@@ -5,7 +5,7 @@ whoareyou/whoareu/whoryou/whoru/whoyou/whou|I'm Castor!#I'll be guiding you thro
 whoami/whoi|You would know the answer#to that question#better than I would.__$Perhaps you want to know#what the point of it all is.|Castor=0:t|
 wherearewe/whereami/wherewe/wherei|This is Terminal FM09193110002_#Though I suppose that means#very little to you.__$This is a terminal used#to find information of all kinds.__$I hope you find#what you are#looking for in here.|Castor=0:t|
 whatareyou/whatareu/whatyou/whatu|How mean,_#calling me a "what"._#Though I suppose I am digital.__$I am basically a#glorified text document#that responds to your inputs.__$My creator put a lot of dialogue in me,#so if you don't get an actual response,#you need to type more #relevant statements.|Castor=0:t|
-whatami/whati|A human being?#I don't know__$Maybe the aliens have#come and taken over#the world by now|Castor=0:t|
+whatami|A human being?#I don't know__$Maybe the aliens have#come and taken over#the world by now|Castor=0:t|
 cat|Yes, it seems like a cat#may be the only thing that#my creator can draw.__$I hope you find my appearance#comforting.|Castor=0:t|
 star|It is of my understanding#that cats in the "real world"#don't have stars on their tails.__$Perhaps to differentiate my#appearance compared to the real thing.|Castor=0:t|
 color|Ah yes,#I suppose you know by now colors are#how you traverse this terminal.__$And by extension,#RGB values as well.__$Try typing a random value,_#maybe you'll find something.__$Nothing that'll be important#for whatever you are trying to find#though.|Castor=0:t|

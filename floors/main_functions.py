@@ -20,7 +20,6 @@ def submit(phrase):
 
     if phrase[0:2] == 'go':
         phrase = phrase[2:]
-
         #all phrases that trigger bg changes
         if phrase == "blue":
             return "0,0,255", "screen_color"
@@ -55,7 +54,7 @@ def submit(phrase):
                         if int(phrase[0]) == 158 and int(phrase[1]) == 193 and int(phrase[2]) == 245:
                             return "meeting", "guide"
                         return phrase[0] + "," + phrase[1] + "," + phrase[2], "screen_color"
-
+                    
         #phrase that also triggers castor
         if phrase == "castor":
             return "meeting", "guide"
@@ -72,6 +71,10 @@ def submit(phrase):
                         return talk, "dialogue_" + chr.name
                 except:
                     pass
+
+    if phrase[0:4] == "open":
+        if phrase[4:] == "readme.txt":
+            return "readme", "open_window"
             
     #displays error message if command not found
     if sum(characters.all_appeared) == 1 and characters.all_appeared[0] == True:

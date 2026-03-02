@@ -80,4 +80,6 @@ def keyboard_inputs(key):
         return "9"
     elif key == pygame.K_COMMA:
         return ","
+    elif key == pygame.K_PERIOD:
+        return "."
     return ""

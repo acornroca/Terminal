@@ -85,7 +85,7 @@ while running:
                     except:
                         value, affect = "",""
 
-                    #print(value)
+                    print(value)
 
                     #changes bg color, value is rgb
                     if affect == "screen_color":
@@ -121,6 +121,11 @@ while running:
                         filidh.temps[0] = ""
                         filidh.temps[1] = value
                         pygame.time.set_timer(filidh.events[1],5)
+
+                    if affect == "open_window":
+                        if value == "readme":
+                            if screen_col_a == 255 and screen_col_b == 255 and screen_col_c == 255:
+                                subprocess.run([sys.executable, R"Terminal\floors\main_floor\main_open_windows\open_help.py"])
 
                     #quits program
                     if affect == "quit":
