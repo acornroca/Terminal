@@ -33,7 +33,6 @@ basic_file = pygame.transform.scale(basic_file, (100,110))
 #basic display text
 help_file_font = pygame.font.Font(R"Terminal\floors\uni_files\Terminal.ttf", 17)
 help_file_surface = help_file_font.render("README.txt", True, (0,0,0))
-#help_file_rect = help_file_surface.get_rect(center=(screen.get_width()//4 + 100, screen.get_height()//6))
 
 #int to randomize what castor will say when asked how they are doing
 castor_care_random = 1

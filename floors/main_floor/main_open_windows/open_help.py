@@ -7,6 +7,8 @@ screen_x = 500
 screen_y = 425
 screen = pygame.display.set_mode((screen_x, screen_y))
 
+pygame.display.set_caption("readme.txt")
+
 screen_col_a = 255
 screen_col_b = 255
 screen_col_c = 255
@@ -29,9 +31,15 @@ signature_surface = signature_font.render("Acorn", True, (255,190,190))
 #clock
 clock = pygame.time.Clock()
 
+x = 0
+
 #gameloop
 running = True
 while running:
+
+    pygame.display.set_caption(str(x))
+
+    x += 1
 
     #clock
     clock.tick(60)
@@ -43,6 +51,7 @@ while running:
         #if user closes window
         if event.type == pygame.QUIT:
             running = False
+
 
     #paints over frame
     screen.fill((screen_col_a,screen_col_b,screen_col_c))
