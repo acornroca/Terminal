@@ -30,3 +30,31 @@ def submit(phrase):
         return "AIn-NameError: Command  \"" + phrase + "\" not found", "dialogue_Filidh"
     
     return "",""
+
+#REMEMBER TO ADD A BOOL FOR IN FIGHT OR NOT ###############################################
+def submit_fight(phrase):
+    phrase = phrase.replace('>','')
+
+    #phrases that quit program
+    if phrase == "quit" or phrase == "67" or phrase == "kys":
+        return "", "quit"
+
+    #phrase that triggers dialogue of any Character who has appeared
+    if phrase[0:4] == "talk":
+        for chr in characters.all_characters:
+            if chr.bools[0] == True:
+                try:
+                    talk = get_dialogue(chr,phrase)
+                    if talk != None:
+                        return talk, "dialogue_" + chr.name
+                except:
+                    pass
+            
+    #displays error message if command not found
+    if sum(characters.all_appeared) == 1 and characters.all_appeared[0] == True:
+        talk = get_dialogue(characters.filidh,phrase)
+        if talk != None:
+            return talk, "dialogue_Filidh"
+        return "AIn-NameError: Command  \"" + phrase + "\" not found", "dialogue_Filidh"
+    
+    return "",""

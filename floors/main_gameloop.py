@@ -121,6 +121,7 @@ while running:
                         filidh.temps[1] = value
                         pygame.time.set_timer(filidh.events[1],5)
 
+                    #opens whatever window is being told to open
                     if affect == "open_window":
                         if value == "readme":
                             if screen_col_a == 255 and screen_col_b == 255 and screen_col_c == 255:
@@ -150,6 +151,7 @@ while running:
                     #resets message after entering
                     current = '>'
 
+        #whenever user goes to red, writes "1" in level checker so that run.py knows to go to red
         if event.type == filidh.events[2]:
             with open (R"Terminal\floors\uni_files\level_checker.txt", 'w') as file:
                 file.write("0\n1")
@@ -210,6 +212,7 @@ while running:
         if event.type == filidh.events[0]:
             filidh.temps[0] = ""
 
+        #decides which of castor's line is being shown when asked how he is
         if not castor.bools[0]:
             castor_care_random = random.randint(1,3)
             if castor_care_random == 1:
@@ -269,6 +272,7 @@ while running:
         screen.blit(basic_file, (screen.get_width()//4 + 200, screen.get_height()//4+100))
         screen.blit(help_file_surface, (screen.get_width()//4 + 205, screen.get_height()//4+215))
 
+    #if changing to red level
     if filidh.bools[6]:
         filidh.bools[6] = False
         pygame.time.set_timer(filidh.events[2], 2000)
