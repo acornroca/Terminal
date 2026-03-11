@@ -35,6 +35,11 @@ keyboard_enable = True
 typing_when = 0
 typing_move_y = 0
 
+#text for turn order
+turn_order_font = pygame.font.SysFont("Algerian", 30)
+turn_order_text = 3
+turn_order_surface = turn_order_font.render(str(turn_order_text), True, (0,0,0))
+
 #text for HP
 HP_label_font = pygame.font.SysFont("Arial", 25)
 HP_label_text = "HP"
@@ -70,6 +75,10 @@ items_label_surface = items_label_font.render(items_label_text, True, (0,0,0))
 items_font = pygame.font.SysFont("Colonna", 30)
 items_text = "Potion"
 items_surface = items_font.render(items_text, True, (0,0,0))
+
+enemies = ["ted"]
+
+turn_order = ["pl", "pl", "pl", "ted"]
 
 #clock
 clock = pygame.time.Clock()
@@ -112,7 +121,7 @@ while running:
                     #sends message that user typed to submit() in functions.py and saves to two variables
                     #affect is what it changes, value is how much it changes or what it changes to
                     try:
-                        value, affect = submit_fight(current.replace(" ",""))
+                        value, affect = submit_fight(current.replace(" ",""), enemies)
                     except:
                         value, affect = "",""
 
@@ -178,6 +187,7 @@ while running:
         typing_when += 1
 
     typing_rect = typing_surface.get_rect(center=(screen.get_width()//2,screen.get_height()-50-(typing_move_y*0.8)))
+    turn_order_rect = turn_order_surface.get_rect(center=(50,-40+typing_move_y))
     HP_label_rect = HP_label_surface.get_rect(center=(screen.get_width()//2-100,screen.get_height()+10-typing_move_y))
     HP_rect = HP_surface.get_rect(center=(screen.get_width()//2-100,screen.get_height()+50-typing_move_y))
     focus_label_rect = focus_label_surface.get_rect(center=(screen.get_width()//2+150,screen.get_height()+10-typing_move_y))
@@ -190,6 +200,7 @@ while running:
     
     if keyboard_enable:
         screen.blit(typing_surface, typing_rect)
+    screen.blit(turn_order_surface, turn_order_rect)
     screen.blit(HP_label_surface, HP_label_rect)
     screen.blit(HP_surface, HP_rect)
     screen.blit(focus_label_surface, focus_label_rect)

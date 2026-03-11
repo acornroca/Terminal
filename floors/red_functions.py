@@ -32,12 +32,23 @@ def submit(phrase):
     return "",""
 
 #REMEMBER TO ADD A BOOL FOR IN FIGHT OR NOT ###############################################
-def submit_fight(phrase):
+def submit_fight(phrase, enemies):
     phrase = phrase.replace('>','')
 
     #phrases that quit program
     if phrase == "quit" or phrase == "67" or phrase == "kys":
         return "", "quit"
+    
+    if phrase[0:6] == "attack":
+        try:
+            rest_of_phrase = phrase[6:].split("with")
+            enemy_attacked = rest_of_phrase[0]
+            attack = rest_of_phrase[1]
+            if enemy_attacked in enemies:
+                pass
+        except:
+            pass
+
 
     #phrase that triggers dialogue of any Character who has appeared
     if phrase[0:4] == "talk":

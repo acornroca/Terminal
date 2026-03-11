@@ -21,6 +21,31 @@ class Character:
         self.text_surface = text_surface
         self.text_rect = text_rect
 
+class Fighter:
+    def __init__(self,name,dialogue,images,events,custom_events,bools,temps,text_font,text_surface,text_rect,
+                 HP, focus, moves, items):
+        self.name = name
+        self.dialogue = dialogue
+        self.images = images
+        self.events = events
+        self.custom_events = custom_events
+        self.bools = bools
+        self.temps = temps
+        self.text_font = text_font
+        self.text_surface = text_surface
+        self.text_rect = text_rect
+        self.HP = HP
+        self.focus = focus
+        self.moves = moves
+        self.items = items
+    
+    def change_HP(self, value):
+        self.HP == value
+
+# Regular Characters : Castor, Filidh
+# Fighter Characters : Ted
+# If a NPC is both Regular and Fighter, it will end with a _r or _f for each respective type
+
 #- - - - - - - - CASTOR - - - - - - - -#
 
 #castor's images and timing for animations
@@ -97,6 +122,8 @@ filidh_events = [filidh_text_disappear, filidh_text_speed, filidh_change_timer]
 filidh_custom_events = [filidh_text_disappear_custom, filidh_text_speed_custom, filidh_change_timer_custom]
 filidh_bools = [filidh_appear, red_door_appear, red_key_have, filidh_repeat, filidh_repeat_activate, filidh_change_main, filidh_change_red] #remember to save for other colors
 filidh_temps = [filidh_text, filidh_text_temp, filidh_text_chr, filidh_repeat_counter]
+
+#- - - - - - - - Ted - - - - - - - -#
 
 #characters
 #name,dialogue,images,appear,text_font,text_surface
