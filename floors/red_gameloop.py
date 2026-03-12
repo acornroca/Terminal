@@ -107,6 +107,7 @@ while running:
         #decides when the text disappears from screen
         if event.type == filidh.events[0]:
             filidh.temps[0] = ""
+            pygame.time.set_timer(filidh.events[0],0)
             
     #paints over frame
     screen.fill((screen_col_a,screen_col_b,screen_col_c))

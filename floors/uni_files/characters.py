@@ -40,10 +40,10 @@ class Fighter:
         self.items = items
     
     def change_HP(self, value):
-        self.HP == value
+        self.HP = value
 
     def change_focus(self, value):
-        self.focus == value
+        self.focus = value
 
     def info_move(self, move_name):
         split = self.moves[move_name].split("/")
@@ -146,27 +146,43 @@ filidh_temps = [filidh_text, filidh_text_temp, filidh_text_chr, filidh_repeat_co
 
 #ted's bools
 ted_appear = False
+ted_turn_switch1 = False
+ted_turn_switch2 = True
+ted_turn = False
 ted_brace = False
 
 #ted's text
 
 #ted's dialogue
 
+#ted's turn timer
+ted_turn_trigger = pygame.event.custom_type()
+ted_turn_trigger_custom = pygame.event.Event(ted_turn_trigger)
+ted_fight_anim = pygame.event.custom_type()
+ted_fight_anim_custom = pygame.event.Event(ted_fight_anim)
+
 #ted's moves
-ted_slump_desc = "10/-10,/No other effects./Ted slumps against you, causing you to stagger back a little."
+ted_slump_desc = "10/-10/No other effects./Ted slumps against you, causing you to stagger back a little."
 ted_brace_desc = "0/-20/Ted takes 50%% less damage next attack./ Ted braces for impact."
 
 #ted's items
 ted_cotton_desc = "Recovers 20 of Ted's HP and focus/Ted stuffed his face with the cotton."
 
 #ted's lists
-ted_bools = [ted_appear, ted_brace]
+ted_bools = [ted_appear, ted_turn_switch1, ted_turn_switch2, ted_turn, ted_brace]
+ted_events = [ted_turn_trigger, ted_fight_anim]
+ted_custom_events = [ted_turn_trigger_custom, ted_fight_anim_custom]
 ted_moves = {"slump":ted_slump_desc, "brace":ted_brace_desc}
 ted_items = {"cotton":ted_cotton_desc}
 
 #- - - - - - - - INVENI_f - - - - - - - -#
 
 #inveni's bools
+
+#inveni's fight animation
+inv_fight_anim = pygame.event.custom_type()
+inv_fight_anim_custom = pygame.event.Event(inv_fight_anim)
+#image
 
 #inveni's moves
 inv_slash_desc = "20/-10/No other effects./You slash with your sword."
@@ -178,6 +194,8 @@ inv_poise_desc = "0/-20/Your next attack does 20 more damage./You centered yours
 inv_potion_desc = "Recovers 20 of your HP./You drink your potion, down to the last drop."
 
 #inveni's lists
+inv_events = [inv_fight_anim]
+inv_custom_events = [inv_fight_anim_custom]
 inv_moves = {"slash":inv_slash_desc, "cleave":inv_cleave_desc, "deflect":inv_deflect_desc, "poise":inv_poise_desc}
 inv_items = {"potion":inv_potion_desc}
 
@@ -208,8 +226,8 @@ filidh = Character("Filidh",
 ted = Fighter("Ted", 
               "", 
               "", 
-              "", 
-              "", 
+              ted_events, 
+              ted_custom_events, 
               ted_bools, 
               "", 
               "", 
@@ -223,8 +241,8 @@ ted = Fighter("Ted",
 inveni = Fighter("Inveni",
                  "",
                  "",
-                 "",
-                 "",
+                 inv_events,
+                 inv_custom_events,
                  "",
                  "",
                  "",

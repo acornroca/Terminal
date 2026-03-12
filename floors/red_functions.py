@@ -39,17 +39,24 @@ def submit_fight(phrase, enemies):
     if phrase == "quit" or phrase == "67" or phrase == "kys":
         return "", "quit"
     
-    if phrase[0:6] == "attack":
+    if phrase[0:3] == "use":
         try:
-            rest_of_phrase = phrase[6:].split("with")
-            enemy_attacked = rest_of_phrase[0]
-            attack = rest_of_phrase[1]
-            if enemy_attacked in enemies:
+            if len(enemies) > 1:
+                rest_of_phrase = phrase[3:].split("on")
+                enemy_attacked = rest_of_phrase[1]
+                attack = rest_of_phrase[0]
+                if enemy_attacked in enemies:
+                    if attack in characters.inveni.moves.keys():
+                        return attack, "attack_inv"
+            else:
+                attack = phrase[3:]
                 if attack in characters.inveni.moves.keys():
-                    return attack, "attack"
+                    return attack, "attack_inv"
         except:
             pass
 
+    if "-ted" in phrase:
+        return phrase[4:], "attack_ted"
 
     #phrase that triggers dialogue of any Character who has appeared
     if phrase[0:4] == "talk":

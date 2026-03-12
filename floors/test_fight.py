@@ -1,5 +1,6 @@
 import pygame
 import os
+import random
 
 screen_loc_x = 0
 screen_loc_y = 0
@@ -46,8 +47,7 @@ HP_label_text = "HP"
 HP_label_surface = HP_label_font.render(HP_label_text, True, (0,0,0))
 
 HP_font = pygame.font.SysFont("Colonna", 50)
-HP_text = "100"
-HP_surface = HP_font.render(HP_text, True, (0,0,0))
+#surface in while loop
 
 #text for Focus
 focus_label_font = pygame.font.SysFont("Arial", 25)
@@ -55,8 +55,7 @@ focus_label_text = "Focus"
 focus_label_surface = focus_label_font.render(focus_label_text, True, (0,0,0))
 
 focus_font = pygame.font.SysFont("Colonna", 50)
-focus_text = "100"
-focus_surface = focus_font.render(focus_text, True, (0,0,0))
+#surface in while loop
 
 #text for Moves
 moves_label_font = pygame.font.SysFont("Arial", 25)
@@ -119,17 +118,16 @@ while running:
                     except:
                         value, affect = "",""
 
-                    #print(value)
+                    print(value, affect)
 
-                    if affect == "attack":
+                    if affect == "attack_inv":
                         attack_name = value
                         info = inveni.moves[attack_name].split("/")
                         ted.change_HP(ted.HP-int(info[0]))
                         inveni.change_focus(inveni.focus+int(info[1]))
+                        turn_order_text -= 1
                         value = inveni.narrate_move(attack_name)
                         affect = "dialogue_Filidh"
-                        print(ted.HP)
-                        print(inveni.focus)
 
                     #whenever Filidh types
                     if affect == "dialogue_Filidh":
@@ -151,7 +149,8 @@ while running:
         if event.type == filidh.events[1]:
             next_char = talk_speed(filidh.temps[1], filidh.temps[2])
             if next_char == "stop":
-                keyboard_enable = True
+                if not ted.bools[3]:
+                    keyboard_enable = True
                 filidh.temps[1] = ''
                 filidh.temps[2] = 0
                 pygame.time.set_timer(filidh.events[1],0)
@@ -168,9 +167,49 @@ while running:
         #decides when the text disappears from screen
         if event.type == filidh.events[0]:
             filidh.temps[0] = ""
+            pygame.time.set_timer(filidh.events[0],0)
 
-    #paints over frame
-    screen.fill((screen_col_a,screen_col_b,screen_col_c))
+        #do the animation when inveni attacks
+        if event.type == inveni.events[0]:
+            pass
+
+        if event.type == ted.events[0]:
+            pygame.time.set_timer(ted.events[0], 0)
+
+            try:
+                value, affect = submit_fight("-ted" + random_move, enemies)
+            except:
+                value, affect = "",""
+
+            if affect == "attack_ted":
+                attack_name = value
+                info = ted.moves[attack_name].split("/")
+                inveni.change_HP(inveni.HP-int(info[0]))
+                ted.change_focus(ted.focus+int(info[1]))
+                turn_order_text = 3
+                ted.bools[2] = True
+                ted.bools[3] = False
+                value = ted.narrate_move(attack_name)
+                affect = "dialogue_Filidh"
+
+            #whenever Filidh types
+            if affect == "dialogue_Filidh":
+                keyboard_enable = False
+                pygame.time.set_timer(filidh.events[0],4000)
+                filidh.temps[0] = ""
+                filidh.temps[1] = value
+                pygame.time.set_timer(filidh.events[1],5)
+
+    if turn_order_text == 0 and ted.bools[2]:
+        keyboard_enable = False
+        ted.bools[1] = True
+        ted.bools[2] = False
+
+    if ted.bools[1]:
+        random_move = list(ted.moves.keys())[random.randint(0,1)]
+        pygame.time.set_timer(ted.events[0], 1000)
+        ted.bools[3] = True
+        ted.bools[1] = False
 
     screen.blit(square, (screen.get_width()//2-50, screen.get_height()//2-150))
 
@@ -190,6 +229,10 @@ while running:
     else:
         typing_when += 1
 
+    HP_surface = HP_font.render(str(inveni.HP), True, (0,0,0))
+    focus_surface = focus_font.render(str(inveni.focus), True, (0,0,0))
+    turn_order_surface = turn_order_font.render(str(turn_order_text), True, (0,0,0))
+
     typing_rect = typing_surface.get_rect(center=(screen.get_width()//2,screen.get_height()-50-(typing_move_y*0.8)))
     turn_order_rect = turn_order_surface.get_rect(center=(50,-40+typing_move_y))
     HP_label_rect = HP_label_surface.get_rect(center=(screen.get_width()//2-100,screen.get_height()+10-typing_move_y))
@@ -199,9 +242,8 @@ while running:
     moves_label_rect = moves_label_surface.get_rect(center=(50,screen.get_height()+10-typing_move_y))
     moves_rect = moves_surface.get_rect(topleft=(50,screen.get_height()+50-typing_move_y))
     items_label_rect = items_label_surface.get_rect(center=(screen.get_width()//2+400,screen.get_height()+10-typing_move_y))
-    items_rect = items_surface.get_rect(topleft=(screen.get_width()//2+400,screen.get_height()+50-typing_move_y))
+    items_rect = items_surface.get_rect(topleft=(screen.get_width()//2+400,screen.get_height()+50-typing_move_y))  
 
-    
     if keyboard_enable:
         screen.blit(typing_surface, typing_rect)
     screen.blit(turn_order_surface, turn_order_rect)
@@ -221,5 +263,8 @@ while running:
 
     #renders all changes to window
     pygame.display.flip()
+
+    #paints over frame
+    screen.fill((screen_col_a,screen_col_b,screen_col_c))
 
     delta_time = clock.tick(60)

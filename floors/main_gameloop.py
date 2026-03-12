@@ -211,6 +211,7 @@ while running:
         #decides when the text disappears from screen
         if event.type == filidh.events[0]:
             filidh.temps[0] = ""
+            pygame.time.set_timer(filidh.events[0],0)
 
         #decides which of castor's line is being shown when asked how he is
         if not castor.bools[0]:
