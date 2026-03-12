@@ -1,6 +1,6 @@
 1. Figure out fight system
     1a. Figure out info for moves, ie getting information from a description of a move and using that to attack enemies, get info, etc.
     1b. Get player to use moves
-    1c. Make fighter objects for ted and probably the player
+    1c. ✓ Make fighter objects for ted and probably the player
 
 2. Hints to go to Castor in Main floor

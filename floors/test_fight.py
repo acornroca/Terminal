@@ -8,7 +8,7 @@ os.environ['SDL_VIDEO_WINDOW_POS'] = f'{screen_loc_x},{screen_loc_y}'
 from red_functions import submit_fight
 from uni_files.keyboard import keyboard_inputs
 from uni_files.talk_speed import talk_speed
-from uni_files.characters import filidh
+from uni_files.characters import filidh, inveni, ted
 
 display_info = pygame.display.Info()
 
@@ -78,16 +78,10 @@ items_surface = items_font.render(items_text, True, (0,0,0))
 
 enemies = ["ted"]
 
-turn_order = ["pl", "pl", "pl", "ted"]
+turn_order = ["inv", "inv", "inv", "ted"]
 
 #clock
 clock = pygame.time.Clock()
-
-window_increase = 0
-
-def change_window_size(x, y):
-    global screen
-    screen = pygame.display.set_mode((x, y))
 
 #gameloop
 running = True
@@ -126,6 +120,16 @@ while running:
                         value, affect = "",""
 
                     #print(value)
+
+                    if affect == "attack":
+                        attack_name = value
+                        info = inveni.moves[attack_name].split("/")
+                        ted.change_HP(ted.HP-int(info[0]))
+                        inveni.change_focus(inveni.focus+int(info[1]))
+                        value = inveni.narrate_move(attack_name)
+                        affect = "dialogue_Filidh"
+                        print(ted.HP)
+                        print(inveni.focus)
 
                     #whenever Filidh types
                     if affect == "dialogue_Filidh":

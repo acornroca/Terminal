@@ -42,6 +42,25 @@ class Fighter:
     def change_HP(self, value):
         self.HP == value
 
+    def change_focus(self, value):
+        self.focus == value
+
+    def info_move(self, move_name):
+        split = self.moves[move_name].split("/")
+        damage = split[0]
+        focus = split[1]
+        desc = split[2]
+        return "DMG: " + damage + " Focus cost: " + focus + " | " + desc
+    
+    def narrate_move(self, move_name):
+        return self.moves[move_name].split("/")[3]
+
+    def info_item(self, item_name):
+        return self.items[item_name].split("/")[0]
+    
+    def narrate_item(self, item_name):
+        return self.items[item_name].split("/")[1]
+
 # Regular Characters : Castor, Filidh
 # Fighter Characters : Ted
 # If a NPC is both Regular and Fighter, it will end with a _r or _f for each respective type
@@ -123,7 +142,44 @@ filidh_custom_events = [filidh_text_disappear_custom, filidh_text_speed_custom, 
 filidh_bools = [filidh_appear, red_door_appear, red_key_have, filidh_repeat, filidh_repeat_activate, filidh_change_main, filidh_change_red] #remember to save for other colors
 filidh_temps = [filidh_text, filidh_text_temp, filidh_text_chr, filidh_repeat_counter]
 
-#- - - - - - - - Ted - - - - - - - -#
+#- - - - - - - - TED - - - - - - - -#
+
+#ted's bools
+ted_appear = False
+ted_brace = False
+
+#ted's text
+
+#ted's dialogue
+
+#ted's moves
+ted_slump_desc = "10/-10,/No other effects./Ted slumps against you, causing you to stagger back a little."
+ted_brace_desc = "0/-20/Ted takes 50%% less damage next attack./ Ted braces for impact."
+
+#ted's items
+ted_cotton_desc = "Recovers 20 of Ted's HP and focus/Ted stuffed his face with the cotton."
+
+#ted's lists
+ted_bools = [ted_appear, ted_brace]
+ted_moves = {"slump":ted_slump_desc, "brace":ted_brace_desc}
+ted_items = {"cotton":ted_cotton_desc}
+
+#- - - - - - - - INVENI_f - - - - - - - -#
+
+#inveni's bools
+
+#inveni's moves
+inv_slash_desc = "20/-10/No other effects./You slash with your sword."
+inv_cleave_desc = "50/-50/No other effects./You cleave downwards with your sword, marking your enemy."
+inv_deflect_desc = "0/20/You take 50%% less damage next attack./You ready your sword, waiting for your enemy's attack."
+inv_poise_desc = "0/-20/Your next attack does 20 more damage./You centered yourself, and poise yourself for your next attack."
+
+#inveni's items
+inv_potion_desc = "Recovers 20 of your HP./You drink your potion, down to the last drop."
+
+#inveni's lists
+inv_moves = {"slash":inv_slash_desc, "cleave":inv_cleave_desc, "deflect":inv_deflect_desc, "poise":inv_poise_desc}
+inv_items = {"potion":inv_potion_desc}
 
 #characters
 #name,dialogue,images,appear,text_font,text_surface
@@ -148,6 +204,36 @@ filidh = Character("Filidh",
                    filidh_text_font, 
                    filidh_text_surface,
                    filidh_text_rect)
+
+ted = Fighter("Ted", 
+              "", 
+              "", 
+              "", 
+              "", 
+              ted_bools, 
+              "", 
+              "", 
+              "", 
+              "", 
+              100, 
+              100, 
+              ted_moves, 
+              ted_items)
+
+inveni = Fighter("Inveni",
+                 "",
+                 "",
+                 "",
+                 "",
+                 "",
+                 "",
+                 "",
+                 "",
+                 "",
+                 100,
+                 100,
+                 inv_moves,
+                 inv_items)
 
 #list of all Characters
 all_characters = [castor,filidh]

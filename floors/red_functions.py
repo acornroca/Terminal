@@ -45,7 +45,8 @@ def submit_fight(phrase, enemies):
             enemy_attacked = rest_of_phrase[0]
             attack = rest_of_phrase[1]
             if enemy_attacked in enemies:
-                pass
+                if attack in characters.inveni.moves.keys():
+                    return attack, "attack"
         except:
             pass
 
