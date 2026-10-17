@@ -126,6 +126,9 @@ while running:
                         if value == "readme":
                             if screen_col_a == 255 and screen_col_b == 255 and screen_col_c == 255:
                                 subprocess.run([sys.executable, R"Terminal\floors\main_floor\main_open_windows\open_help.py"])
+                        if value == "tedfight":
+                            with open(R"Terminal\floors\uni_files\level_checker.txt", 'w') as file:
+                                file.write("0\n0\n1")
 
                     #quits program
                     if affect == "quit":
@@ -154,7 +157,7 @@ while running:
         #whenever user goes to red, writes "1" in level checker so that run.py knows to go to red
         if event.type == filidh.events[2]:
             with open (R"Terminal\floors\uni_files\level_checker.txt", 'w') as file:
-                file.write("0\n1")
+                file.write("0\n1\n0")
             running = False
 
         #timers for castor blinking

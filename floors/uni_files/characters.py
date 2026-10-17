@@ -109,7 +109,7 @@ castor_temps = [castor_text, castor_text_temp, castor_text_chr]
 #filidh bools
 filidh_appear = True
 red_door_appear = False
-red_key_have = True
+red_key_have = False
 filidh_repeat = False
 filidh_repeat_activate = False
 filidh_change_main = False

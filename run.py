@@ -3,9 +3,10 @@ import sys
 import pygame
 
 #file locations for gameloops and the level checker text
-level_checker_txt = R"Terminal\floors\uni_files\level_checker.txt"
+level_checker_txt = R"floors\uni_files\level_checker.txt"
 main_file_path = R"Terminal\floors\main_gameloop.py"
 red_file_path = R"Terminal\floors\red_gameloop.py"
+test_fight_file_path = R"Terminal\floors\test_fight.py"
 
 #bools for what to do
 #switch makes sure that the file is only override once
@@ -13,9 +14,10 @@ switch = False
 quit = False
 main = False
 red = False
+ted = False
 
 #list for all levels
-level_change = [main,red]
+level_change = [main,red,ted]
 
 #gameloop
 running = True
@@ -41,7 +43,7 @@ while running:
     #overrides the level checker and opens the right level or quits
     if switch:
         with open(level_checker_txt, 'w') as file:
-            file.write("0\n0")
+            file.write("0\n0\n0")
         switch = False
 
         #quits
@@ -57,3 +59,6 @@ while running:
         if level_change[1]:
             subprocess.run([sys.executable, red_file_path])
             level_change[1] = False
+
+        if level_change[2]:
+            subprocess.run([sys.executable, test_fight_file_path])

@@ -75,6 +75,8 @@ def submit(phrase):
     if phrase[0:4] == "open":
         if phrase[4:] == "readme.txt":
             return "readme", "open_window"
+        if phrase[4:] == "tedfight":
+            return "tedfight", "open_window"
             
     #displays error message if command not found
     if sum(characters.all_appeared) == 1 and characters.all_appeared[0] == True:
